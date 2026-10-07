@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Kanyanga Safari — black (#000000) and white (#FFFFFF) only. */
+:root {
+  color-scheme: light;
+  --font-display: "DM Serif Display";
+  --font-sans: "Manrope";
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--font-sans), "Manrope", "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    font-weight: 400;
+  }
+  /* DM Serif Display has a single weight: never let the browser fake a bold. */
+  .font-display {
+    font-synthesis: none;
+    font-weight: 400;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #000000;
+  }
+  ::selection {
+    background: #000000;
+    color: #ffffff;
+  }
+  :focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+/* Slow, cinematic reveals. Content is fully visible without JavaScript. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 1.4s cubic-bezier(0.2, 0.7, 0.1, 1),
+    transform 1.4s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.js [data-reveal][data-shown] {
+  opacity: 1;
+  transform: none;
+}
+.js [data-reveal="media"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(12% 0 0 0);
+  transition: clip-path 1.8s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.js [data-reveal="media"][data-shown] {
+  clip-path: inset(0 0 0 0);
+}
+
+[data-parallax] {
+  will-change: transform;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* The hero's only overlay: a hairline that draws downward, inviting a scroll. */
+@keyframes cue {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-in {
+  animation: page-in 0.9s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal],
+  .js [data-reveal="media"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .page-in,
+  [class*="animate-[cue"] {
+    animation: none;
+  }
+}

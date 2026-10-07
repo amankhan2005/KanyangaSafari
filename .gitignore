@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment — never commit real values. Examples and the non-secret preview config stay tracked.
+.env
+.env.*
+!.env.example
+!.env.preview
+
+# Build output
+dist/
+dist-preview/
+build/
+coverage/
+*.tsbuildinfo
+
+# Netlify CLI local state
+.netlify/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp

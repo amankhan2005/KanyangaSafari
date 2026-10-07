@@ -1,0 +1,6 @@
+{
+  "regions": ["Central", "Southern", "Coastal"],
+  "budgets": ["Budget $500–$800", "Mid $800–$1200", "Luxury $1200+"],
+  "interests": ["Wildlife", "Adventure", "Culture"],
+  "services": ["big-five-walks", "game-drives", "bird-watching", "cultural-visits", "photography", "beach", "honeymoon", "family"]
+}
